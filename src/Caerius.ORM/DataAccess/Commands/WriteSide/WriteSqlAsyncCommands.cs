@@ -5,21 +5,21 @@ namespace Caerius.ORM.DataAccess.Commands.WriteSide;
 
 public static class WriteSqlAsyncCommands
 {
-    public static async Task ExecuteScalarAsync(this ICeariusDbConnectionFactory connectionFactory,
+    public static async Task ExecuteScalarAsync(this ICaeriusDbConnectionFactory connectionFactory,
         StoredProcedureRequest request)
     {
         try
         {
-            var connection = connectionFactory.CreateConnection();
+            IDbConnection connection = connectionFactory.CreateConnection();
 
             using (connection)
             {
-                await using var command = new SqlCommand(request.ProcedureName, connection as SqlConnection);
+                await using SqlCommand command = new(request.ProcedureName, connection as SqlConnection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddRange(request.Parameters.ToArray());
+                command.Parameters.AddRange([.. request.Parameters]);
 
-                await command.ExecuteScalarAsync();
+                _ = await command.ExecuteScalarAsync();
             }
         }
         catch (Exception ex)
@@ -28,19 +28,19 @@ public static class WriteSqlAsyncCommands
         }
     }
 
-    public static async Task<int> ExecuteAsync(this ICeariusDbConnectionFactory connectionFactory,
+    public static async Task<int> ExecuteAsync(this ICaeriusDbConnectionFactory connectionFactory,
         StoredProcedureRequest request)
     {
         try
         {
-            var connection = connectionFactory.CreateConnection();
+            IDbConnection connection = connectionFactory.CreateConnection();
 
             using (connection)
             {
-                await using var command = new SqlCommand(request.ProcedureName, connection as SqlConnection);
+                await using SqlCommand command = new(request.ProcedureName, connection as SqlConnection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddRange(request.Parameters.ToArray());
+                command.Parameters.AddRange([.. request.Parameters]);
 
                 return await command.ExecuteNonQueryAsync();
             }

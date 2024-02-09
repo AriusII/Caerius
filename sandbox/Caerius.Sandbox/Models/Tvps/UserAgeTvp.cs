@@ -1,5 +1,5 @@
-using System.Data;
 using Caerius.ORM.DataAccess.Mappers;
+using System.Data;
 
 namespace Caerius.Sandbox.Models.Tvps;
 
@@ -8,11 +8,14 @@ public sealed record UserAgeTvp(Guid Guid, short Age)
 {
     public DataTable MapToDataTable(IEnumerable<UserAgeTvp> items)
     {
-        var dataTable = new DataTable();
-        dataTable.Columns.Add("Guid", typeof(Guid));
-        dataTable.Columns.Add("Age", typeof(short));
+        DataTable dataTable = new();
+        _ = dataTable.Columns.Add("Guid", typeof(Guid));
+        _ = dataTable.Columns.Add("Age", typeof(short));
 
-        foreach (var item in items) dataTable.Rows.Add(item.Guid, item.Age);
+        foreach (UserAgeTvp item in items)
+        {
+            _ = dataTable.Rows.Add(item.Guid, item.Age);
+        }
 
         return dataTable;
     }

@@ -1,13 +1,13 @@
 namespace Caerius.ORM.DataAccess.Factories;
 
-public sealed record CeariusCeariusDbConnectionFactory(string ConnectionString)
-    : ICeariusDbConnectionFactory
+public sealed record CaeriusDbConnectionFactory(string ConnectionString)
+    : ICaeriusDbConnectionFactory
 {
     public IDbConnection CreateConnection()
     {
         try
         {
-            var connection = new SqlConnection(ConnectionString);
+            SqlConnection connection = new(ConnectionString);
             connection.Open();
             return connection;
         }

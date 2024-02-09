@@ -1,5 +1,5 @@
-using System.Data;
 using Caerius.ORM.DataAccess.Mappers;
+using System.Data;
 
 namespace Caerius.Sandbox.Models.Tvps;
 
@@ -7,12 +7,14 @@ public sealed record NewUsersTvp(string Username, string Password) : ITvpMapper<
 {
     public DataTable MapToDataTable(IEnumerable<NewUsersTvp> items)
     {
-        var dataTable = new DataTable("NewUsersTvp");
-        dataTable.Columns.Add("User", typeof(string));
-        dataTable.Columns.Add("Pass", typeof(string));
+        DataTable dataTable = new("NewUsersTvp");
+        _ = dataTable.Columns.Add("User", typeof(string));
+        _ = dataTable.Columns.Add("Pass", typeof(string));
 
-        foreach (var item in items)
-            dataTable.Rows.Add(item.Username, item.Password);
+        foreach (NewUsersTvp item in items)
+        {
+            _ = dataTable.Rows.Add(item.Username, item.Password);
+        }
 
         return dataTable;
     }

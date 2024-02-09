@@ -5,10 +5,10 @@ namespace Caerius.ORM.Extensions;
 
 public static class ServiceCollectionExtension
 {
-    public static IServiceCollection RegisterCearius(this IServiceCollection services, string connectionString)
+    public static IServiceCollection RegisterCaerius(this IServiceCollection services, string connectionString)
     {
         return services
-            .AddScoped<ICeariusDbConnectionFactory, CeariusCeariusDbConnectionFactory>(_ =>
-                new CeariusCeariusDbConnectionFactory(connectionString));
+            .AddScoped<ICaeriusDbConnectionFactory, CaeriusDbConnectionFactory>(_ =>
+                new CaeriusDbConnectionFactory(connectionString));
     }
 }
