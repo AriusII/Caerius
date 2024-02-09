@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CA9F82B6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cearius.ORM", "src\Cearius.ORM\Cearius.ORM.csproj", "{3B9AA350-0D7B-4458-82C9-2EEEDF472D60}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sandbox", "sandbox", "{6B89DC5C-F8D4-4C1F-98BB-2F505F066DF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cearius.Sandbox", "sandbox\Cearius.Sandbox\Cearius.Sandbox.csproj", "{3D828858-8A7B-4645-89F8-17BF983B8FBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,11 +18,16 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3B9AA350-0D7B-4458-82C9-2EEEDF472D60} = {B687462B-B30F-42FF-B3EA-1A21148AA735}
+		{3D828858-8A7B-4645-89F8-17BF983B8FBD} = {6B89DC5C-F8D4-4C1F-98BB-2F505F066DF2}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{3B9AA350-0D7B-4458-82C9-2EEEDF472D60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3B9AA350-0D7B-4458-82C9-2EEEDF472D60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B9AA350-0D7B-4458-82C9-2EEEDF472D60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B9AA350-0D7B-4458-82C9-2EEEDF472D60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D828858-8A7B-4645-89F8-17BF983B8FBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D828858-8A7B-4645-89F8-17BF983B8FBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D828858-8A7B-4645-89F8-17BF983B8FBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D828858-8A7B-4645-89F8-17BF983B8FBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
