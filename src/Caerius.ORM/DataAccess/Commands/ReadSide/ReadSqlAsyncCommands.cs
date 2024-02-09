@@ -7,25 +7,27 @@ namespace Caerius.ORM.DataAccess.Commands.ReadSide;
 public static class ReadSqlAsyncCommands
 {
     public static async Task<ImmutableArray<T>> ImmutableQueryAsync<T>(
-        this ICeariusDbConnectionFactory connectionFactory,
+        this ICaeriusDbConnectionFactory connectionFactory,
         StoredProcedureRequest request)
         where T : class, ISpMapper<T>
     {
         try
         {
-            var connection = connectionFactory.CreateConnection();
+            IDbConnection connection = connectionFactory.CreateConnection();
 
             using (connection)
             {
-                await using var command = new SqlCommand(request.ProcedureName, connection as SqlConnection);
-                command.Parameters.AddRange(request.Parameters.ToArray());
+                await using SqlCommand command = new(request.ProcedureName, connection as SqlConnection);
+                command.Parameters.AddRange([.. request.Parameters]);
                 command.CommandType = CommandType.StoredProcedure;
 
-                var results = ImmutableArray.CreateBuilder<T>();
-                await using var reader = await command.ExecuteReaderAsync();
+                ImmutableArray<T>.Builder results = ImmutableArray.CreateBuilder<T>();
+                await using SqlDataReader reader = await command.ExecuteReaderAsync();
 
                 while (await reader.ReadAsync())
+                {
                     results.Add(T.MapFromReader(reader));
+                }
 
                 return results.ToImmutable();
             }
@@ -36,25 +38,27 @@ public static class ReadSqlAsyncCommands
         }
     }
 
-    public static async Task<IEnumerable<T>> QueryAsync<T>(this ICeariusDbConnectionFactory connectionFactory,
+    public static async Task<IEnumerable<T>> QueryAsync<T>(this ICaeriusDbConnectionFactory connectionFactory,
         StoredProcedureRequest request)
         where T : class, ISpMapper<T>
     {
         try
         {
-            var connection = connectionFactory.CreateConnection();
+            IDbConnection connection = connectionFactory.CreateConnection();
 
             using (connection)
             {
-                await using var command = new SqlCommand(request.ProcedureName, connection as SqlConnection);
-                command.Parameters.AddRange(request.Parameters.ToArray());
+                await using SqlCommand command = new(request.ProcedureName, connection as SqlConnection);
+                command.Parameters.AddRange([.. request.Parameters]);
                 command.CommandType = CommandType.StoredProcedure;
 
-                var results = new List<T>();
-                await using var reader = await command.ExecuteReaderAsync();
+                List<T> results = [];
+                await using SqlDataReader reader = await command.ExecuteReaderAsync();
 
                 while (await reader.ReadAsync())
+                {
                     results.Add(T.MapFromReader(reader));
+                }
 
                 return results.AsEnumerable();
             }
@@ -65,27 +69,29 @@ public static class ReadSqlAsyncCommands
         }
     }
 
-    public static async Task<T?> FirstOrDefaultAsync<T>(this ICeariusDbConnectionFactory connectionFactory,
+    public static async Task<T?> FirstOrDefaultAsync<T>(this ICaeriusDbConnectionFactory connectionFactory,
         StoredProcedureRequest request)
         where T : class, ISpMapper<T>
     {
         try
         {
-            var connection = connectionFactory.CreateConnection();
+            IDbConnection connection = connectionFactory.CreateConnection();
 
             using (connection)
             {
-                await using var command = new SqlCommand(request.ProcedureName, connection as SqlConnection);
+                await using SqlCommand command = new(request.ProcedureName, connection as SqlConnection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddRange(request.Parameters.ToArray());
+                command.Parameters.AddRange([.. request.Parameters]);
 
-                var results = ImmutableArray.CreateBuilder<T>();
+                ImmutableArray<T>.Builder results = ImmutableArray.CreateBuilder<T>();
 
-                await using var reader = await command.ExecuteReaderAsync();
+                await using SqlDataReader reader = await command.ExecuteReaderAsync();
 
                 while (await reader.ReadAsync())
+                {
                     results.Add(T.MapFromReader(reader));
+                }
 
                 return results.FirstOrDefault();
             }

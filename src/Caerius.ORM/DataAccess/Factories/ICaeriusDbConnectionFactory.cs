@@ -1,6 +1,6 @@
 namespace Caerius.ORM.DataAccess.Factories;
 
-public interface ICeariusDbConnectionFactory
+public interface ICaeriusDbConnectionFactory
 {
     IDbConnection CreateConnection();
 }

@@ -1,21 +1,20 @@
-﻿using Caerius.ORM.Extensions;
-using Caerius.Sandbox.Extensions;
+﻿using Caerius.Sandbox.Extensions;
 using Caerius.Sandbox.Services.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 #region > Dependency Injection Container
 
-var services = new ServiceCollection();
+ServiceCollection services = new();
 
-var configuration = new ConfigurationBuilder()
+IConfigurationRoot configuration = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
     .AddJsonFile("appsettings.json", true, true)
     .Build();
 
 services.AddSingleton<IConfiguration>(configuration);
 
-var connectionString = configuration.GetConnectionString("SandboxConnection");
+string? connectionString = configuration.GetConnectionString("SandboxConnection");
 
 if (connectionString != null)
 {
@@ -30,15 +29,15 @@ else
     services.RegisterDependenciesInjections();
 }
 
-var serviceProvider = services.BuildServiceProvider();
+ServiceProvider serviceProvider = services.BuildServiceProvider();
 
 #endregion
 
-var sandboxService = serviceProvider.GetRequiredService<ISandboxService>();
+ISandboxService sandboxService = serviceProvider.GetRequiredService<ISandboxService>();
 
 await sandboxService.CreateListOfUsers();
 
-var users = await sandboxService.GetUsers();
+IEnumerable<Caerius.Sandbox.Models.Dtos.UsersDto> users = await sandboxService.GetUsers();
 
 await sandboxService.UpdateRandomUserAge(users);
 

@@ -23,7 +23,7 @@ public sealed record SandboxService(ISandboxRepository SandboxRepository) : ISan
     {
         const int increment = 0;
 
-        var usersToCreate =
+        List<NewUsersTvp> usersToCreate =
             Enumerable
                 .Range(1, _random.Next(1, 2500))
                 .Select(i =>
@@ -37,7 +37,7 @@ public sealed record SandboxService(ISandboxRepository SandboxRepository) : ISan
 
     public Task UpdateRandomUserAge(IEnumerable<UsersDto> users)
     {
-        var usersToUpdate =
+        List<UserAgeTvp> usersToUpdate =
             users
                 .OrderBy(_ => _random.Next())
                 .Take(50)
@@ -46,7 +46,7 @@ public sealed record SandboxService(ISandboxRepository SandboxRepository) : ISan
                         u.Guid,
                         (short)_random.Next(3, 20)))
                 .ToList();
-        
+
         return SandboxRepository.UpdateRandomUserAge(usersToUpdate);
     }
 }

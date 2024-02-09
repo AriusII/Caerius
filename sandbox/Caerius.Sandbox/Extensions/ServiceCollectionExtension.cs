@@ -10,7 +10,7 @@ public static class ServiceCollectionExtension
 {
     public static void RegisterDependenciesInjections(this IServiceCollection services)
     {
-        services
+        _ = services
             .AddServices()
             .AddRepositories();
     }
