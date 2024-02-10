@@ -1,25 +1,29 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34526.213
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B687462B-B30F-42FF-B3EA-1A21148AA735}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CA9F82B6-7497-45C7-B1AB-8E1950A1552E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caerius.ORM", "src\Caerius.ORM\Caerius.ORM.csproj", "{3B9AA350-0D7B-4458-82C9-2EEEDF472D60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Caerius.ORM", "src\Caerius.ORM\Caerius.ORM.csproj", "{3B9AA350-0D7B-4458-82C9-2EEEDF472D60}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sandbox", "sandbox", "{6B89DC5C-F8D4-4C1F-98BB-2F505F066DF2}"
 	ProjectSection(SolutionItems) = preProject
 		sandbox\Sandbox-Database.sql = sandbox\Sandbox-Database.sql
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caerius.Sandbox", "sandbox\Caerius.Sandbox\Caerius.Sandbox.csproj", "{3D828858-8A7B-4645-89F8-17BF983B8FBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Caerius.Sandbox", "sandbox\Caerius.Sandbox\Caerius.Sandbox.csproj", "{3D828858-8A7B-4645-89F8-17BF983B8FBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caerius.UnitTests", "Caerius.UnitTests\Caerius.UnitTests.csproj", "{3BA10999-6EEA-4CF8-AFFB-11F750B52E83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caerius.IntegrationTests", "Caerius.IntegrationTests\Caerius.IntegrationTests.csproj", "{C1147198-F0D0-42AC-9AD7-B9729CB7D383}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{3B9AA350-0D7B-4458-82C9-2EEEDF472D60} = {B687462B-B30F-42FF-B3EA-1A21148AA735}
-		{3D828858-8A7B-4645-89F8-17BF983B8FBD} = {6B89DC5C-F8D4-4C1F-98BB-2F505F066DF2}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{3B9AA350-0D7B-4458-82C9-2EEEDF472D60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -30,5 +34,25 @@ Global
 		{3D828858-8A7B-4645-89F8-17BF983B8FBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D828858-8A7B-4645-89F8-17BF983B8FBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D828858-8A7B-4645-89F8-17BF983B8FBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BA10999-6EEA-4CF8-AFFB-11F750B52E83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BA10999-6EEA-4CF8-AFFB-11F750B52E83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BA10999-6EEA-4CF8-AFFB-11F750B52E83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BA10999-6EEA-4CF8-AFFB-11F750B52E83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1147198-F0D0-42AC-9AD7-B9729CB7D383}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1147198-F0D0-42AC-9AD7-B9729CB7D383}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1147198-F0D0-42AC-9AD7-B9729CB7D383}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1147198-F0D0-42AC-9AD7-B9729CB7D383}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3B9AA350-0D7B-4458-82C9-2EEEDF472D60} = {B687462B-B30F-42FF-B3EA-1A21148AA735}
+		{3D828858-8A7B-4645-89F8-17BF983B8FBD} = {6B89DC5C-F8D4-4C1F-98BB-2F505F066DF2}
+		{3BA10999-6EEA-4CF8-AFFB-11F750B52E83} = {CA9F82B6-7497-45C7-B1AB-8E1950A1552E}
+		{C1147198-F0D0-42AC-9AD7-B9729CB7D383} = {CA9F82B6-7497-45C7-B1AB-8E1950A1552E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E0714EC4-AD6A-4E23-8C12-00482C98083F}
 	EndGlobalSection
 EndGlobal

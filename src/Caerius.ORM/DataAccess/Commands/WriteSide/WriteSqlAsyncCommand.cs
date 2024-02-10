@@ -3,10 +3,10 @@ using Caerius.ORM.Models;
 
 namespace Caerius.ORM.DataAccess.Commands.WriteSide;
 
-public static class WriteSqlAsyncCommands
+public static class WriteSqlAsyncCommand
 {
     public static async Task ExecuteScalarAsync(this ICaeriusDbConnectionFactory connectionFactory,
-        StoredProcedureRequest request)
+        StoredProcedureRequestModel request)
     {
         try
         {
@@ -29,7 +29,7 @@ public static class WriteSqlAsyncCommands
     }
 
     public static async Task<int> ExecuteAsync(this ICaeriusDbConnectionFactory connectionFactory,
-        StoredProcedureRequest request)
+        StoredProcedureRequestModel request)
     {
         try
         {

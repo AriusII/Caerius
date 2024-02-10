@@ -4,11 +4,11 @@ using Caerius.ORM.Models;
 
 namespace Caerius.ORM.DataAccess.Commands.ReadSide;
 
-public static class ReadSqlAsyncCommands
+public static class ReadSqlAsyncCommand
 {
     public static async Task<ImmutableArray<T>> ImmutableQueryAsync<T>(
         this ICaeriusDbConnectionFactory connectionFactory,
-        StoredProcedureRequest request)
+        StoredProcedureRequestModel request)
         where T : class, ISpMapper<T>
     {
         try
@@ -39,7 +39,7 @@ public static class ReadSqlAsyncCommands
     }
 
     public static async Task<IEnumerable<T>> QueryAsync<T>(this ICaeriusDbConnectionFactory connectionFactory,
-        StoredProcedureRequest request)
+        StoredProcedureRequestModel request)
         where T : class, ISpMapper<T>
     {
         try
@@ -70,7 +70,7 @@ public static class ReadSqlAsyncCommands
     }
 
     public static async Task<T?> FirstOrDefaultAsync<T>(this ICaeriusDbConnectionFactory connectionFactory,
-        StoredProcedureRequest request)
+        StoredProcedureRequestModel request)
         where T : class, ISpMapper<T>
     {
         try
